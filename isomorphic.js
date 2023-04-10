@@ -19,7 +19,6 @@ function isIsomorphic (strs, strt) {
     }
     return true;
 };
-
      strs = "egg";
      strt = "add";
 console.log(isIsomorphic(strs, strt));
