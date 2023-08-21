@@ -2,6 +2,7 @@
 function isIsomorphic (strs, strt) {
      x = strs.length(), y = strt.length();
     if (x !== y) {
+        print("Strings must be of the same length.")
         return false;
     }
     Map <Char, char> map; new HashMap;
