@@ -4,41 +4,46 @@ function checkIsomorphic() {
   const str1 = document.getElementById("string1").value;
   const str2 = document.getElementById("string2").value;
 
-  if (str1.length !== str2.length) {
+  if (str1 === "") {
     document.getElementById("result").innerHTML =
-      "Strings must be of the same length.";
+      "<span class = 'error'> The string is empty. Please enter a string:</span>";
     return;
   }
-  const map1 =new Map()
-  const map2 = new Map()
 
-  for (let i = 0; i< str1.length; i++) {
-    const char1 = str1.charAt(i)
-    const char2 = str2.charAt(i)
+  if (str2 === "") {
+    document.getElementById("result").innerHTML =
+      "<span class = 'error'> The string is empty. Please enter a string:</span>";
+    return;
   }
-}
 
-function isIsomorphic(strs, strt) {
-  (x = strs.length()), (y = strt.length());
-  if (x !== y) {
-    print("");
-    return false;
+  // Check if length of both strings is equal
+  if (str1.length !== str2.length) {
+    document.getElementById("result").innerHTML =
+      "<span class='error'>Strings must be of the same length. </span>";
+    return;
   }
-  Map < Char, char > map;
-  new HashMap();
-  Set < char > set;
-  new HashSet();
-  for (let i = 0; i < x; i++);
-  (s1 = strs.charAt(i)), (s2 = strt.charAt(i));
-  if (map.containskey(s1)) {
-    if (map.get(s1) !== s2) return false;
-  } else {
-    if (set.contains(s2)) return false;
-    map.put(s1, s2);
-    set.add(s2);
+
+  //initialize 2 empty hash maps
+  const map1 = new Map();
+  const map2 = new Map();
+
+  for (let i = 0; i < str1.length; i++) {
+    const char1 = str1.charAt(i);
+    const char2 = str2.charAt(i);
+
+    if (map1.has(char1) && map1.get(char1) !== char2) {
+      document.getElementById("result").innerHTML =
+        "<span class='false'>False: strings not isomorphic. </span>";
+      return;
+    }
+    if (map2.has(char2) && map2.get(char2) !== char1) {
+      document.getElementById("result").innerHTML =
+        "<span class='false'>False: strings not isomorphic. </span>";
+      return;
+    }
+    map1.set(char1, char2);
+    map2.set(char2, char1);
   }
-  return true;
+  document.getElementById("result").innerHTML =
+    "<span class='true'>True: strings are isomorphic. </span>";
 }
-strs = "egg";
-strt = "add";
-console.log(isIsomorphic(strs, strt));
